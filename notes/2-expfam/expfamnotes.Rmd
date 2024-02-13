@@ -715,15 +715,15 @@ $$
 
 We will also need the following results taken from \cite{wainwright2019high}: 
 
-\begin{lem} \label{lem:subexpo}
+\begin{prop} \label{lem:subexpo}
 Consider an independent sequence $\{Y_i\}_{i=1}^n$ of random variables with mean $\mu_i$, such that each $Y_i$ is sub-exponential with parameters $(\lambda_i, b_i)$. Then $\sum_{i=1}^n\left(Y_i - \mu_i\right)$ is also sub-exponential with parameters $(\lambda_*,b_*)$ where 
 $$
   \lambda_* = \sqrt{\sum_{i=1}^n \lambda_i^2} \qquad \text{and} \qquad  b_* = \max_{i=1,...,n} b_i.
 $$
-\end{lem}
+\end{prop}
 
 
-\begin{lem} \label{lem:upperbound}
+\begin{prop} \label{lem:upperbound}
 Consider an independent sequence $\{Y_i\}_{i=1}^n$ of random variables with mean $\mu_i$, such that each $Y_i$ is sub-exponential with parameters $(\lambda_i, b_i)$. Then
 $$
 \Prob\left(n^{-1}\sum_{i=1}^n(Y_i-\mu_i) \geq t\right) \leq \left\{\begin{array}{cl}
@@ -733,7 +733,7 @@ $$
 \right.
 $$
 where $(\lambda_*,b_*)$ are as defined in the previous lemma.
-\end{lem}
+\end{prop}
 
 
 Our finiteness argument will be demonstrated in the case when $Y$ is a scalar canonical statistic full regular exponential family with canonical parameter $\theta$ (although we will still use the $\nabla$ to denote derivatives). \textbf{It is a problem for the reader to show that $Y$ is a sub-exponential random variable}. Now let $\hat\theta$ be the MLE for the canonical parameter $\theta$. We now show that the MLE of an exponential family obeys sub-exponential concentration. Consider a Taylor expansion of the score function of an exponential family evaluated at the MLE
@@ -742,7 +742,7 @@ Our finiteness argument will be demonstrated in the case when $Y$ is a scalar ca
     + \nabla^2l_n(\theta)(\hat\theta - \theta) + R_n	\\
     &= \sum_{i=1}^n\{y_i - \nabla c(\theta)\} + \nabla^2l_n(\theta)(\hat\theta - \theta) + R_n,
 \end{align*}
-where $\nabla^2l_n(\theta) = -n\nabla^2 c(\theta) = -nI(\theta)$ and $R_n = o_P(n^{-1/2})$. Notice that $\sum_{i=1}^n\{y_i - \nabla c(\theta)\}$ is a sum of mean zero sub-exponential random variables, and is also sub-exponential by Lemma \ref{lem:subexpo}. Furthermore, scalar products of $\sum_{i=1}^n\{y_i - \nabla c(\theta)\}$ are also sub-exponential. After rearranging terms in the above displayed equation we see that 
+where $\nabla^2l_n(\theta) = -n\nabla^2 c(\theta) = -nI(\theta)$ and $R_n = o_P(n^{-1/2})$. Notice that $\sum_{i=1}^n\{y_i - \nabla c(\theta)\}$ is a sum of mean zero sub-exponential random variables, and is also sub-exponential by Proposition \ref{lem:subexpo}. Furthermore, scalar products of $\sum_{i=1}^n\{y_i - \nabla c(\theta)\}$ are also sub-exponential. After rearranging terms in the above displayed equation we see that 
 $$
   (\hat\theta - \theta) = n^{-1}I^{-1}(\theta)\sum_{i=1}^n\{y_i - \nabla c(\theta)\} + \widetilde R_n,
 $$
@@ -757,19 +757,19 @@ where $t > 0$. There exists a number $a > 0$ such that, for $n$ large,
   &\leq \Prob\left( n^{-1}\sum_{i=1}^n\{y_i - \nabla c(\theta)\} \geq aI(\theta)t\right).
 \end{align*}
 
-Lemma \ref{lem:upperbound} implies that 
+Proposition \ref{lem:upperbound} implies that 
 $$
   \Prob\left( n^{-1}\sum_{i=1}^n\{y_i - \nabla c(\theta)\} \geq aI(\theta)t\right) 
     \leq 
 \left\{\begin{array}{cl}
-    \exp\left(-\frac{na^2I^2(\theta)t^2}{2\lambda^2}\right), & \text{for} \; 0 \leq t \leq \frac{\lambda^2}{naI(\theta)b}, \\
-    \exp\left(-\frac{naI(\theta)t}{2b}\right), & \text{for} \; t > \frac{\lambda^2}{naI(\theta)b}.
+    \exp\left(-\frac{na^2I^2(\theta)t^2}{2\lambda^2}\right), & \text{for} \; 0 \leq t \leq \frac{\lambda^2}{aI(\theta)b}, \\
+    \exp\left(-\frac{naI(\theta)t}{2b}\right), & \text{for} \; t > \frac{\lambda^2}{aI(\theta)b}.
 \end{array}	
 \right.
 $$
 We can therefore conclude that the MLE of $\theta$ exhibits sub-exponential concentration following the logic that $(\hat\theta - \theta)$ has the same tail bounds as a sub-exponential random variable. We can use these results to obtain the rate of convergence. Set $t = \sqrt{\log(n)/n}$ and observe that 
 $$
-  \Prob\left( (\hat\theta - \theta) \geq aI(\theta)\sqrt{\frac{\log(n)}{n}}\right) 
+  \Prob\left( (\hat\theta - \theta) \geq \sqrt{\frac{\log(n)}{n}}\right) 
     = O\left(n^{-\frac{a^2I^2(\theta)}{2\lambda}}\right).
 $$
 
@@ -812,13 +812,13 @@ $$
 Thus a canonical linear submodel gives us a new exponential family, with lower-dimensional canonical parameter and statistic. The submodel exponential family is full if the original exponential family was full. Notice that $\Theta$ and $B$ are defined through the column space of $M$, not the particular model matrix $M$, the particular $\beta$ value does not determine the submodel uniquely.
 
 
-To distinguish between the submodel and the originally given exponential family, we often call the latter the \emph{saturated model}. Now we have four parameters: the saturated model canonical and mean value parameters, respectively, $\theta$ and $\mu$, and the submodel canonical and mean value parameters, respectively, $\beta$ and $\tau$. Relations between these parameterizations are given in Figure \ref{Fig1:parameterizations}.
-
-The observed equals expected property for the submodel is
+To distinguish between the submodel and the originally given exponential family, we often call the latter the \emph{saturated model}. Now we have four parameters: the saturated model canonical and mean value parameters, respectively, $\theta$ and $\mu$, and the submodel canonical and mean value parameters, respectively, $\beta$ and $\tau$. Relations between these parameterizations are given in Figure \ref{Fig1:parameterizations}. The observed equals expected property for the submodel is 
 \begin{equation} \label{submodelmvp}
-	\hat\tau = M^T\hat\mu = M^Ty.
+	\hat\tau = M^T\hat\mu.
 \end{equation}
-We cannot actually solve these equations for $\hat\mu$ because the mapping $\mu \to M^T\mu$ is usually not one-to-one (the $n > p$ case where $M \in \R^{n \times p}$ and is full column rank). Hence we cannot determine $\hat\theta$ and $\hat\beta$ from them either. The only way to determine the MLE is to maximize the log likelihood \eqref{subloglike} for $\beta$ to obtain $\hat\beta$ and then $\hat\theta = M\hat\beta$ and $\hat\mu = \nabla c(\hat\theta)$ and $\hat\tau = M^T\hat\mu$. But the observed equals expected property is nevertheless very important.
+Here, $\hat\mu$ is estimated using the submodel with model matrix $\beta$. 
+
+We cannot actually solve for $\hat\mu$ from $\hat\tau$ because the mapping $\mu \to M^T\mu$ is usually not one-to-one (the $n > p$ case where $M \in \R^{n \times p}$ and is full column rank). The only way to determine the MLE for all parameters is to maximize the log likelihood \eqref{subloglike} for $\beta$ to obtain $\hat\beta$ and then $\hat\theta = M\hat\beta$ and $\hat\mu = \nabla c(\hat\theta)$ and $\hat\tau = M^T\hat\mu$.
 
 \vspace{0.5cm}Recall that the saturated model canonical parameter vector $\theta$ is "linked" to the saturated model mean value parameter vector through the change-of-parameter mappings $g(\theta)$. We can reparameterize $\theta = M\beta$ and write
 $$
@@ -890,9 +890,9 @@ where $\Phi$ is the distribution function for the standard normal distribution. 
 
 Similar to the p-value above, we can also construct $(1-\alpha)\times 100\%$ Wald based confidence intervals of the form
 $$
-  \hat\beta_j \pm z_{\alpha/2}\text{se}(\hat\beta_j)
+  \hat\beta_j \pm z_{1-\alpha/2}\text{se}(\hat\beta_j)
 $$
-where $z_{\alpha/2}$ is a quantile of the standard normal distribution at $\alpha/2$ where $\alpha \in (0,1)$ is a chosen error tolerance.
+where $z_{1-\alpha/2}$ is the $(1-\alpha/2)$th quantile of the standard normal distribution where $\alpha \in (0,1)$ is a chosen error tolerance.
 
 
 ## Deviance, goodness of fit, and likelihood ratios
@@ -911,11 +911,11 @@ $$
 $$
 We see that the deviance statistic is a function of a ratio of two likelihoods, one corresponding to the canonical submodel and one corresponding to the saturated model. The deviance statistic has approximate distribution
 $$
-  D(y;\hat\mu) \; \overset{H_o}{\sim} \; \chi^2_{\text{df}}
+  D(y;\hat\mu) \; \overset{H_o}{\sim} \; \chi^2_{n-p}
 $$
-where $H_o$ is that the canonical submodel is correct and the alternative test is that the canonical submodel is incorrect but the saturated model is correct, df = $n - p$, $n$ is the sample size, and $p$ is the number of parameters in the canonical submodel. So we reject correctness of the canonical submodel when
+where $H_o$ is that the canonical submodel is correct and the alternative test is that the canonical submodel is incorrect but the saturated model is correct, $n$ is the sample size, and $p$ is the number of parameters in the canonical submodel. So we reject correctness of the canonical submodel when
 $$
-  D(y;\hat\mu) \; > \: \chi^2_{\text{df}}(\alpha).
+  D(y;\hat\mu) \; > \: \chi^2_{n-p}(\alpha).
 $$
 <!-- (Note that the $\chi^2$ approximation can be poor.) -->
 
@@ -929,9 +929,9 @@ using the likelihood ratio $\chi^2$ statistic given by
  -2\left[l(\hat\mu_0;y) - l(\hat\mu_1;y)\right] &= -2\left[l(\hat\mu_0;y) - l(y;y)\right]
    - \left\{-2\left[l(\hat\mu_1;y) - l(y;y)\right]\right\} \\
    &= D(y;\hat\mu_0) - D(y;\hat\mu_1) \\
-   &\approx \chi^2_{\text{df}},
+   &\approx \chi^2_{p_1 - p_0},
 \end{align*}
-where df = $p_1 - p_0$, $p_1$ is the number of parameters in $\mathcal{M}_1$, and $p_0$ is the number of parameters in $\mathcal{M}_0$. (Note that the $\chi^2$ approximation is often adequate here even it is not adequate for the saturated model provided that $\mathcal{M}_1$ is not too close to saturated.)
+where $p_1$ is the number of parameters in $\mathcal{M}_1$, and $p_0$ is the number of parameters in $\mathcal{M}_0$. (Note that the $\chi^2$ approximation is often adequate here even it is not adequate for the saturated model provided that $\mathcal{M}_1$ is not too close to saturated.)
 
 
 ## Information criteria
@@ -947,7 +947,7 @@ The "information" in AIC is [Kullback-Leibler information](https://en.wikipedia.
 
 What Akaike discovered is that the maximized value of the log likelihood is a biased estimate of Kullback-Leibler information. It overestimates it by $p$, the dimension of the model (number of parameters). Or, what is the same thing, the likelihood ratio test (LRT) statistic, which is minus twice the (maximized value of the) log likelihood, underestimates its expectation by $2 p$.  So
 $$
-   \text{AIC} = -2l(\hat{\beta}) + 2 p
+   \text{AIC} = -2l(\hat\mu;y) + 2 p
 $$
 All of this is a "large sample size" result based on the "usual" asymptotics of maximum likelihood, which is not valid for all statistical models. But it is always valid for exponential family models in general and categorical data analysis in particular (when sample size is "large").
 
@@ -962,7 +962,7 @@ Approaches based on hypothesis testing, such as that implemented by R function `
 
 In the late 1970's Schwarz proposed another information criterion, which is now usually called the [Bayesian information criterion (BIC)](https://en.wikipedia.org/wiki/Bayesian_information_criterion). Its formula is
 $$
-   \text{BIC} = -2l(\hat{\beta}) + \log(n) \cdot p
+   \text{BIC} = -2l(\hat\mu;y) + \log(n) \cdot p
 $$
 Since $\log(n) \ge 2$ for $n \ge 8$, BIC penalizes larger models more than AIC.
 BIC always selects smaller models than AIC.
@@ -979,7 +979,7 @@ $$
 $$
 where $\mathcal{M}$ is the class of models under consideration.
 
-This is a "large sample size" result based on the "usual" asymptotics of Bayesian inference ([the Bernsteinâ€“von Mises theorem](https://en.wikipedia.org/wiki/Bernstein%E2%80%93von_Mises_theorem)), which is not valid for all statistical models. But it is always valid for exponential family models in general and categorical data analysis in particular (when sample size is "large").
+This is a "large sample size" result based on the "usual" asymptotics of Bayesian inference ([the Bernstein-von Mises theorem](https://en.wikipedia.org/wiki/Bernstein%E2%80%93von_Mises_theorem)), which is not valid for all statistical models. But it is always valid for exponential family models in general and categorical data analysis in particular (when sample size is "large").
 
 When we use a flat prior ($g$ is a constant function of $m$), the prior $g$ cancels out of the formula, and we obtain
 $$
@@ -993,7 +993,7 @@ Clearly, BIC is defined the way it is to be comparable to AIC, not to produce th
 
 In model selection AIC and BIC do two different jobs. No selection criterion can do both jobs \citep{yang2005can}:
 
- * BIC provides consistent model selection when the true unknown model is among the models under considexration.
+ * BIC provides consistent model selection when the true unknown model is among the models under consideration.
 
  * AIC is minimax-rate optimal (details of minimax-rate optimality are beyond the scope of this course) for estimating the regression function and other probabilities and expectations.  It does not need the true unknown model to be among the models under consideration.
 
@@ -1033,11 +1033,11 @@ Now solving
 $$
   U(\beta) \approx U(\beta_k) + H(\beta_k)(\beta - \beta_k) = 0
 $$
-for $\beta$ yields the next guess. That guess is
+for $\beta$ yields a guess for the maximizer of the above second order Taylor series approximation. That guess is
 \begin{equation} \label{NRupdates}
 	\beta_{k+1} = \beta_k - H(\beta_k)^{-1}U(\beta_k).
 \end{equation}
-This algorithm is fast, exhibits [quadratic convergence](https://en.wikipedia.org/wiki/Rate_of_convergence), provided that it converges. Convergence is likely in identifiable models where $H(\beta_{0})$ is positive definite. However, the Newton-Raphson method can be quite sensitive to the choice of starting values $\beta_{0}$.
+This algorithm is fast, exhibits [quadratic convergence](https://en.wikipedia.org/wiki/Rate_of_convergence), provided that it converges. Convergence is likely in identifiable models where $H(\beta_{0})$ is positive definite. However, the Newton-Raphson method can be quite sensitive to the choice of starting values $\beta_{0}$. More details, including a graphical demonstration of the algorithm, is given in Section 4.6 of \cite{agresti2013cat}.
 
 For many identifiable GLMs, including Poisson models with log link and binomial models with logit link, with full rank model matrices the Hessian is negative definite and the log likelihood is a strictly concave function. The maximum likelihood estimators of model parameters exist and are unique under quite general conditions \citep{wedderburn1976existence}. Thus Newton Raphson should exhibit solid performance for finding MLEs of the submodel canonical parameter vector.
 
@@ -1305,7 +1305,7 @@ $$
   (\tau_1 - \tau_2)^T(\beta_1 - \beta_2) > 0, \qquad \text{whenever} \; \tau_1 \neq \tau_2.
 $$
 
-By standard theory of maximum likelihood, MLEs of all parameters are consistent, efficient (have minimum asymptotic variance), and asymptotically normal, with easily calculated asymptotic variance (inverse Fisher information matrix). Fisher information is easily calculated, \eqref{FI} is Fisher information for the saturated model canonical parameter $\theta$;
+By standard theory of maximum likelihood, MLEs of all parameters are consistent, efficient (have minimum asymptotic variance), and asymptotically normal, with easily calculated asymptotic variance (inverse Fisher information matrix). \eqref{FI} is Fisher information for the saturated model canonical parameter $\theta$;
 $$
   \nabla^2_\beta c(M\beta) = M^T\left(\nabla c(M\beta)\right)M
 $$
@@ -1317,6 +1317,7 @@ $$
 $$
 and $M^TI(\theta)M$ is the asymptotic variance for $\hat\tau$. These can be used for hypothesis tests and confidence intervals about these other parameters.
 
+We can obtain reliable estimates of modeling parameters via optimization routines. The \texttt{glm} package uses a carefully written IRLS routine to maximize $l(\beta)$ and obtain $\hat{\beta}$.
 
 
 \section*{Acknowledgments}

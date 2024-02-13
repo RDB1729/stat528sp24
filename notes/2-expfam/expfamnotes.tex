@@ -1,0 +1,1161 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage[sectionbib]{natbib}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{tikz-cd}
+\usepackage{pgfplots}
+\usepackage{geometry}
+\usepackage{bm}
+\usepackage{array,epsfig,fancyheadings,rotating}
+\usepackage{multirow}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Exponential Family Notes},
+  pdfauthor={Daniel J. Eck},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Exponential Family Notes}
+\author{Daniel J. Eck}
+\date{}
+
+\begin{document}
+\maketitle
+
+\allowdisplaybreaks
+
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\Proj}{\textbf{P}}
+\newcommand{\Hcal}{\mathcal{H}}
+\newcommand{\rootn}{\sqrt{n}}
+\newcommand{\pibf}{\bm{\pi}}
+\newcommand{\logit}{\text{logit}}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\indep}{\perp\!\!\!\perp}
+\newcommand{\inner}[1]{\langle #1 \rangle}
+\newcommand{\set}[1]{\{\, #1 \,\}}
+
+\newtheorem{cor}{Corollary}
+\newtheorem{lem}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+
+\setcounter{page}{1}
+\setcounter{equation}{0}
+
+\newcommand\red[1]{{\color{red}#1}}
+
+\allowdisplaybreaks
+
+\tableofcontents
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+One of the main themes of this course will be developing regression
+models and demonstrating their use as a means to analyse data. We will
+see that data structure motivates theoretical and methodological
+development. Here data will often be collected with the purpose of
+answering some question that is of interest to a researcher. Examples of
+such questions include:
+
+\begin{itemize}
+\item Does adding in-person lectures to an online course improve learning outcomes for students in an introductory statistics course?
+\item Does a genetically modified genotype provide an improvement to the photosynthetic process for soybeans planted in the wild?
+\item Is there a racial component to police sentencing? 
+\item What phenotypic traits of an organism are associated with increased ability to produce offspring?
+\end{itemize}
+
+Defensible answers to such questions can be provided by statistical
+regression models. In this course we are going to focus on statistical
+regression models that arise from exponential families. These models
+have been rigorously developed and can be applied to answer questions
+like those presented above. We will study the origins, fitting, and
+application of these models in detail, and we will study other
+statistical models when nuances in data and its analysis warrant
+different modeling strategies.
+
+In my experience and in the experience of many I know, analyzing data to
+answer a question of interest to a researcher is very difficult. To do
+this often requires having extensive conversations with someone from a
+discipline that is not statistics. For these conversations to be
+effective one has to have a vast knowledge of statistics, has to be able
+to translate these concepts into spoken word understandable to a layman,
+and has to internally translate what they hear from a researcher into
+statistical terms. Misunderstandings are inevitable.
+
+This course will not be a consulting course and we will not simulate
+such conversations directly. However, materials in this course will, to
+the best of my abilities, will be presented in a largely expository
+style with notation and symbols given secondary priority to stating
+concepts in words. This is meant to develop the student's ability to
+translate concepts. It is important to note that an expository writing
+style is not unique to this course. In fact, it is advocated as a style
+for writing mathematics by mathematicians who are interested in
+presenting their ideas clearly. The following passage is taken from an
+essay written by University of Illinois Urbana-Champaign graduate and
+well-known mathematician
+\href{https://en.wikipedia.org/wiki/Paul_Halmos}{Paul Halmos}:
+
+\begin{quote}
+``The best notation is no notation; whenever it is possible to avoid the
+use of a complicated alphabetic apparatus, avoid it. A good attitude to
+the preparation of written mathematical exposition is to pretend that it
+is spoken. Pretend that you are explaining the subject to a friend on a
+long walk in the woods, with no paper available; fall back on symbolism
+only when it is really necessary.''
+\end{quote}
+
+Halmos's essay appeared in a book titled
+\href{https://bookstore.ams.org/hwm}{How to write mathematics}. This
+book was the result of a committee authorized by the Council of the
+American Mathematical Society. Halmos wanted to resign from the
+committee almost immediately because he thought the project was too
+interesting to be leave to a committee who he felt would not be able to
+complete the task properly. His resignation was rejected by the chairman
+of the committee.
+
+To say Halmos was passionate about mathematical writing would be an
+understatement. But this course is not just about mathematical writing.
+This course involves the writing of statistical concepts to be read by a
+generic researcher from some other discipline. It is important to
+distinguish mathematics from statistics. First of all, Mathematics and
+Statistics are separate disciplines. Their distinction is perhaps best
+articulated by \href{https://en.wikipedia.org/wiki/John_Nelder}{John
+Nelder} who, perhaps by coincidence, played a major role in developing
+the exponential family regression models that will be studied in this
+course.
+
+Nelder often references the following Bertrand Russell quote:
+
+\begin{quote}
+``Mathematics is a subject in which we do not know what we are talking
+about, nor care whether what we say is true.''
+\end{quote}
+
+One of Nelder's take on Russell's quote is given in his 1986
+Presidential Address to the Royal Statistical Society
+\citep{nelder1986statistics}:
+
+\begin{quote}
+``A mathematical theory, such as group theory, constructs an edifice of
+theorems built on a well-defined set of axioms. The method of exposition
+(though not usually the method of discovery) is deductive, and some of
+the results are of enormous power and generality. But the theorems are
+totally abstract, as Russell's characteristic aphorism so aptly
+declares. That is, the theory stands on its own, without reference to
+possible interpretation in terms of objects in the world outside, their
+properties and behaviour. In statistics, by contrast, we ought to know
+what we are talking about, in the sense of relating our theory to
+external objects. We should also care about whether what we say is true,
+in the sense of our inferences and predictions being well supported by
+the data.''
+\end{quote}
+
+Nelder goes on to state:
+
+\begin{quote}
+``When mathematicians construct theories they do not seem in general to
+think of themselves as constructing tools for others to use. That they
+frequently, and apparently inadvertently, do just that has often been
+remarked upon\ldots{} If the applicability of mathematical theories as
+tools in statistics is indeed unplanned, then we should not be surprised
+if their application can be both liberating and constricting\ldots{} We
+need both to take what is useful from a theory and to refuse to be
+constrained by it where it proves unsuitable for our purposes\ldots{}
+The main danger, I believe, in allowing the ethos of mathematics to gain
+too much influence in statistics is that statisticians will be tempted
+into types of abstraction that they believe will be thought respectable
+by mathematicians rather than pursuing ideas of value to
+statistics\ldots{} However, there is little doubt that this temptation
+ought to be resisted, for the two disciplines have very different
+objectives.''
+\end{quote}
+
+The objective of statistics according to Nelder is stated in the first
+sentence of the abstract of his Presidential Address:
+
+\begin{quote}
+``\textbf{Statistics is seen as being primarily concerned with the
+theory and practice of the matching of theory to data by research
+worker.}''
+\end{quote}
+
+As alluded to previously in this introduction, this course will
+primarily be concerned with the theory and practice of the matching of
+theory to data by research worker.
+
+The matching of theory to data by research worker requires data obtained
+by research workers to exist and it requires collaboration between the
+statistician and the research worker. Thus the expository style of this
+course is required to go beyond Halmos's expository style for
+mathematics and will occasionally require plain speaking of aspects of
+data, statistical concepts, or both. Additionally, some homework
+problems in this course will be vague. A final goal will be stated in
+homework problems, but the specific model to be applied ot the specific
+covariates to use will not be explicitly stated. This will be
+uncomfortable but it is by design. Homework problems in this course will
+build experience with translating written words circling a question of
+interest into statistical terms, fitting models to answer the question
+of interest, back translating answers from statistical models back into
+vernacular understandable by a layman, and presenting results and
+analysis clearly.
+
+\cite{nelder1999statistics} collects his ideas in the following
+sentence:
+
+\begin{quote}
+``Mathematics remains the source of our tools, but statistical science
+is not just a branch of mathematics; it is not a purely deductive
+system, because it is concerned with quantitative inferences from data
+obtained from the real world.''
+\end{quote}
+
+We now develop exponential families and explore their mathematical
+properties. Exponential families and regression models that arise from
+them are needed tools for making quantitative inferences from data
+obtained from the real world. Data of the form:
+
+\vspace{12pt}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{13}\NormalTok{)}
+\NormalTok{n }\OtherTok{=} \DecValTok{50}
+
+\DocumentationTok{\#\# Bernoulli}
+\FunctionTok{rbinom}\NormalTok{(}\AttributeTok{n =}\NormalTok{ n, }\AttributeTok{size =} \DecValTok{1}\NormalTok{, }\AttributeTok{prob =} \FloatTok{0.25}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 0 0 0 0 1 0 0 1 1 0 0 1 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0
+## [39] 1 0 0 0 1 0 0 1 0 0 0 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Poisson}
+\FunctionTok{rpois}\NormalTok{(}\AttributeTok{n =}\NormalTok{ n, }\AttributeTok{lambda =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 10 13  5 12  8  8  9  8  8  9  7 11  9  9 10  9 20 14 14  8 12 13 10 10 16
+## [26]  9  7  7 12  6 10 17  7  7 13  9  6 11 13 11 11  8 10  9 11 13 13 12 12 12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Normal}
+\FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =}\NormalTok{ n)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  1.45220302  0.23400474 -0.62822125 -2.88088757 -0.05461001 -0.30682025
+##  [7] -1.93230970  1.72747690  0.82827281  0.28158880  2.61745473 -0.15096193
+## [13] -1.89606166  1.32567044  0.25153188 -0.42020630  2.02578307  0.22481310
+## [19]  0.51349255  0.97362537  2.42577100 -0.41792890 -2.29381013 -1.36004169
+## [25]  0.05444450 -0.01681048 -1.53919240  0.75665139  0.38411449 -0.30143957
+## [31] -0.67610539 -0.47362192  0.72946611  1.05485783 -0.86416775 -0.39363148
+## [37] -0.74302218 -1.87596294 -0.39570349  1.20444672  0.12989528 -1.38555391
+## [43]  0.67068362 -0.28299731 -2.27810871 -0.09873861  0.41139707  1.18896385
+## [49] -0.87415590  0.46426986
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Logistic regression}
+\NormalTok{p }\OtherTok{=} \DecValTok{3}
+\NormalTok{beta }\OtherTok{=} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{,p}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}
+\NormalTok{x }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(n}\SpecialCharTok{*}\NormalTok{p, }\AttributeTok{sd =} \FloatTok{0.5}\NormalTok{), }\AttributeTok{nrow =}\NormalTok{ n, }\AttributeTok{ncol =}\NormalTok{ p)}
+\NormalTok{M }\OtherTok{=} \FunctionTok{cbind}\NormalTok{(}\DecValTok{1}\NormalTok{, x)}
+\NormalTok{y }\OtherTok{=} \FunctionTok{rbinom}\NormalTok{(}\AttributeTok{n =}\NormalTok{ n, }\AttributeTok{size =} \DecValTok{1}\NormalTok{, }\AttributeTok{prob =} \DecValTok{1}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1} \SpecialCharTok{+} \FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{M }\SpecialCharTok{\%*\%}\NormalTok{ beta))) }
+\NormalTok{dat }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{y =}\NormalTok{ y, }
+                 \AttributeTok{x1 =}\NormalTok{ x[, }\DecValTok{1}\NormalTok{], }
+                 \AttributeTok{x2 =}\NormalTok{ x[, }\DecValTok{2}\NormalTok{], }
+                 \AttributeTok{x3 =}\NormalTok{ x[, }\DecValTok{3}\NormalTok{])}
+\FunctionTok{head}\NormalTok{(dat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   y          x1          x2          x3
+## 1 1 -0.86729736  0.52288044  0.41335803
+## 2 1  0.05994054 -0.05204069  0.30972733
+## 3 1 -0.03327264 -1.20832770  0.51360990
+## 4 1  0.22808504  1.15006522  0.08587834
+## 5 1  0.29499420 -0.12562875 -0.36819712
+## 6 0  0.68368826  0.25237883  0.04707178
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Poisson regression}
+\NormalTok{y }\OtherTok{=} \FunctionTok{rpois}\NormalTok{(}\AttributeTok{n =}\NormalTok{ n, }\AttributeTok{lambda =} \FunctionTok{exp}\NormalTok{(M }\SpecialCharTok{\%*\%}\NormalTok{ beta)) }
+\NormalTok{dat }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{y =}\NormalTok{ y, }
+                 \AttributeTok{x1 =}\NormalTok{ x[, }\DecValTok{1}\NormalTok{], }
+                 \AttributeTok{x2 =}\NormalTok{ x[, }\DecValTok{2}\NormalTok{], }
+                 \AttributeTok{x3 =}\NormalTok{ x[, }\DecValTok{3}\NormalTok{])}
+\FunctionTok{head}\NormalTok{(dat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    y          x1          x2          x3
+## 1  1 -0.86729736  0.52288044  0.41335803
+## 2  6  0.05994054 -0.05204069  0.30972733
+## 3  3 -0.03327264 -1.20832770  0.51360990
+## 4 15  0.22808504  1.15006522  0.08587834
+## 5  2  0.29499420 -0.12562875 -0.36819712
+## 6 12  0.68368826  0.25237883  0.04707178
+\end{verbatim}
+
+\hypertarget{definitions-and-properties-of-exponential-families}{%
+\section{Definitions and properties of exponential
+families}\label{definitions-and-properties-of-exponential-families}}
+
+\hypertarget{log-likelihood}{%
+\subsection{Log likelihood}\label{log-likelihood}}
+
+In this class we will define a member of an
+\emph{exponential family of distributions} as a parametric statistical
+model having log likelihood \begin{equation} \label{expolog}
+    l(\theta) = \langle y, \theta \rangle - c(\theta).
+\end{equation} Here,
+
+\begin{enumerate}
+  \item[] $y$ is the canonical statistic, 
+  \item[] $\theta$ is the canonical parameter, 
+    \item[] $\langle y,\theta \rangle$ is the usual inner product,
+    \item[] $c(\theta)$ is the cumulant function.
+\end{enumerate}
+
+We use the convention that terms that do not contain the parameter
+vector can be dropped from a log likelihood; otherwise additional terms
+also appear in \eqref{expolog}. When the log likelihood can be expressed
+as \eqref{expolog} we say that \(y\) is the \emph{canonical statistic}
+and \(\theta\) is the \emph{canonical parameter}. We will often refer to
+the log likelihood \eqref{expolog} as being in canonical form.
+
+Although we usually say ``the'' canonical statistic, ``the'' canonical
+parameter, and ``the'' cumulant function, these are not uniquely
+defined: - any one-to-one
+\href{https://mathworld.wolfram.com/AffineFunction.html}{affine
+function} of a canonical statistic vector is another canonical statistic
+vector, - any one-to-one affine function of a canonical parameter vector
+is another canonical parameter vector, and - any real-valued affine
+function plus a cumulant function is another cumulant function.
+
+These possible changes of statistic, parameter, or cumulant function are
+not algebraically independent. Changes to one may require changes to the
+others to keep a log likelihood of the form \eqref{expolog}. Usually no
+fuss is made about this nonuniqueness. One fixes a choice of canonical
+statistic, canonical parameter, and cumulant function and leaves it at
+that.
+
+Many widely used statistical distributions are exponential families that
+have log likelihoods that can be written in canonical form. This current
+presentation is simple and general, we will discuss support sets for
+\(y\) and parameter spaces for \(\theta\) later.
+
+\vspace{0.5cm}
+
+\noindent {\bf Example (Binomial distribution)}: Done in class.
+
+\vspace{0.5cm}
+
+\noindent {\bf Example (Normal distribution)}: Done in class.
+
+\hypertarget{densities}{%
+\subsection{Densities}\label{densities}}
+
+We will have some trouble writing down exponential family densities with
+our definition of a log likelihood \eqref{expolog}. First \(y\) is not
+the data; rather it is a statistic, a function of the data. Let \(w\)
+represent the full data, then the densities have the form
+\begin{equation} \label{expodens}
+  f_\theta(w) = h(w)\exp\left(\langle Y(w),\theta \rangle - c(\theta)\right)
+\end{equation} and the word \emph{density} here can refer to a
+probability mass function (PMF) or a probability density function (PDF)
+or to a probability mass-density function (PMDF) if we are referring to
+a distribution that is partly discrete and partly continuous (either
+some components of the \(Y\) are discrete and some continuous or some
+components are a mixture of discrete and continuous) or to a density
+with respect to an arbitrary positive measure in the sense of
+probability theory.
+
+The \(h(w)\) arises from any term not containing the parameter that is
+dropped when writing the log likelihood \eqref{expolog}. We saw this
+above in our Binomial distribution example. The function \(h\) has to be
+nonnegative, and any point \(w\) such that \(h(w) = 0\) is not in the
+support of any distribution in the family.
+
+\vspace{0.5cm}
+
+\noindent {\bf Example (Binomial distribution)}: Done in class
+
+\vspace{0.5cm}
+
+\noindent {\bf Example (Normal distribution)}: Done in class.
+
+\hypertarget{cumulant-functions}{%
+\subsection{Cumulant functions}\label{cumulant-functions}}
+
+Here we demonstrate that the cumulant function of an exponential family
+that is written in canonical form must also be written in a specific
+functional form. Being a density, \eqref{expodens} must sum, integrate,
+or sum-integrate to one. Hence, \begin{align*}
+    1 &= \int f_\theta(w) dw \\ 
+      &= \int h(w)\exp\left(\langle Y(w),\theta \rangle - c(\theta)\right) dw \\
+      &= \exp\left(-c(\theta)\right) \int \exp\left(\langle Y(w),\theta \rangle\right) h(w) dw.
+\end{align*} Rearranging the above implies that \[
+  c(\theta) = \log\left(\int \exp\left(\langle Y(w),\theta \rangle\right) h(w) dw\right).
+\] Being the expectation of a strictly positive quantity, the
+expectation here must always be strictly positive, so the logarithm is
+well-defined. By convention, for \(\theta\) such that the expectation
+does not exist, we say \(c(\theta) = \infty\).
+
+In probability theory the cumulant function is the log
+\href{https://en.wikipedia.org/wiki/Laplace_transform}{Laplace
+transformation} corresponding to the \emph{generating measure} of the
+exponential family which is given by \(\lambda(dw) = h(w)dw\) when the
+random variable is continuous. Under this formulation \[
+  c(\theta) = \log\left(\int \exp\left(\langle Y(w),\theta \rangle\right) \lambda(dw)\right).
+\] In our log likelihood based definition of the exponential family
+\eqref{expolog}, the dropped terms which do not appear in the log
+likelihood are incorporated into the counting measure (discrete
+distributions) or Lebesgue measure (continuous distributions).
+
+\hypertarget{ratios-of-densities}{%
+\subsection{Ratios of densities}\label{ratios-of-densities}}
+
+When we look at a ratio of two exponential family densities with
+canonical parameter vectors \(\theta\) and \(\psi\), the \(h(w)\) term
+cancels, and \begin{equation} \label{Radon}
+  f_{\theta;\psi}(w) = \frac{f_{\theta}(w)}{f_{\psi}(w)} = e^{\langle Y(w),\theta - \psi \rangle - c(\theta) + c(\psi)} 
+\end{equation} is a density of the distribution with canonical parameter
+\(\theta\) taken with respect to the distribution with canonical
+parameter \(\psi\) (a
+\href{https://en.wikipedia.org/wiki/Radon\%E2\%80\%93Nikodym_theorem}{Radon-Nikodym
+derivative} in probability theory). For any \(w\) such that \(h(w) = 0\)
+\eqref{Radon} still makes sense because such \(w\) are not in the
+support of the distribution with parameter value \(\psi\) and hence do
+not not contribute to any probability or expectation calculation, so it
+does not matter how \eqref{Radon} is defined for such \(w\). Now, since
+\eqref{Radon} is everywhere strictly positive, we see that every
+distribution in the family has the same support.
+
+\hypertarget{full-families}{%
+\subsection{Full families}\label{full-families}}
+
+Our definition of a log likelihood for an exponential family did not
+specify a parameter space of allowable values for \(\theta\). We now
+revisit this. We will let \begin{equation} \label{parmspace}
+  \Theta = \{ \theta : c(\theta) < \infty \}
+\end{equation} define a \emph{full} exponential family. Many commonly
+used statistical models are full exponential families. There is
+literature about so-called \emph{curved exponential families} and other
+non-full exponential families, but we will not discuss them. With
+parameter space \eqref{parmspace}, we now have a log likelihood
+\eqref{expolog} and density \eqref{expodens} for all
+\(\theta \in \Theta\).
+
+\vspace{0.5cm}
+
+\noindent {\bf Example (Binomial distribution)}: Done in class
+
+We now state a mathematical properties of cumulant functions that hold
+when an exponential family is either full or possesses a parameter space
+that is a subset of \eqref{parmspace}. First, some preliminary
+definitions.
+
+\begin{defn}
+A function $f$ on a metric space is lower semicontinuous (LSC) at $x$ if 
+$$
+  \liminf_{n\to\infty} f(x_n) \geq f(x), \quad \text{for all sequences} \; x_n \to x.
+$$
+A function $f$ is LSC if it is LSC at all points of its domain.
+\end{defn}
+
+\begin{defn}
+For any function $f:S\to\bar{\mathbb{R}}$, where $S$ is any set and $\bar{\mathbb{R}}$ is the extended real numbers ($\bar{\mathbb{R}} = \mathbb{R}\cup \{-\infty,\infty\}$), the effective domain of $f$ is 
+$$
+  \text{dom} f = \{x \in S : f(x) < \infty\}.
+$$
+\end{defn}
+
+\begin{defn}
+A function $f$ on a vector space is is convex if 
+$$
+  f(sx + (1-s)y) \leq sf(x) + (1-s)f(y), \quad \; x,y \in \text{dom} f \; and \; 0 < s < 1.
+$$
+\end{defn}
+
+The above definitions of lower semicontinuity and convex functions are
+appropriate for functions defined, respectively, on metric and vector
+spaces. In this course functions relate to exponential families
+involving real-valued data and real-valued parameter spaces. Thus, the
+results above hold for our purposes. The above definition of effective
+domain was needed to define a convex function, but it is interesting to
+note a connection between effective domain and full exponential families
+when we take \(f\) to be a cumulant function. We now have
+
+\begin{thm} \label{thm-cumulant}
+The cumulant function of an exponential family is a lower semicontinuous convex function.
+\end{thm}
+
+The proof of this Theorem follows from two measure theoretic results.
+LSC follows from
+\href{https://en.wikipedia.org/wiki/Fatou\%27s_lemma}{Fatou's Lemma},
+and convexity follows from
+\href{https://en.wikipedia.org/wiki/H\%C3\%B6lder\%27s_inequality}{Hölder's
+inequality}.
+
+\hypertarget{moment-and-cumulant-generating-functions}{%
+\subsection{Moment and cumulant generating
+functions}\label{moment-and-cumulant-generating-functions}}
+
+We no longer fuss about \(Y(w)\) and will suppress \(w\) when writing
+\(Y\). We still mention the function \(h\) in \eqref{expodens} which is
+now derived with respect to \(Y\) instead of \(w\). This distinction is
+under the hood and not that important. The
+\href{https://en.wikipedia.org/wiki/Moment-generating_function}{moment
+generating function} of the canonical statistic, if it exists, is given
+by \begin{equation} \label{mgf}
+\begin{split}
+    M_\theta(t) &= \mathrm{E}_\theta\left(e^{\langle Y, t \rangle}\right) \\
+      &= \int e^{\langle y, t \rangle} h(y)e^{\left(\langle y, \theta \rangle - c(\theta)\right)} dy \\
+      &= \int h(y)e^{\left(\langle y, t + \theta \rangle - c(\theta)\right)}dy \\
+      &= \int h(y)e^{\left(\langle y, t + \theta \rangle - c(\theta) \pm c(\theta + t)\right)}dy \\
+      &= e^{c(\theta + t) - c(\theta)}.
+\end{split}
+\end{equation} The moment generating function exists if it is finite on
+a neighborhood of zero, that is, if \(\theta\) is an interior point of
+the full canonical parameter space \eqref{parmspace}. For other
+\(\theta\) we say the moment generating function does not exist.
+
+By the theory of moment generating functions, if the moment generating
+function exists, then moments of all orders exist and ordinary moments
+are given by the derivatives of \(M_\theta(t)\) evaluated at zero. In
+particular, \begin{align*}
+  \mathrm{E}_\theta(Y) &= \nabla M_\theta(0) = \nabla c(\theta) \\  
+  \mathrm{E}_\theta(YY^T) &= \nabla^2 M_\theta(0) = \nabla^2 c(\theta) + [\nabla c(\theta)][\nabla c(\theta)]^T.      
+\end{align*} A log moment generating function is called a
+\emph{cumulant generating function} and its derivatives evaluated at
+zero are called the \emph{cumulants} of the distribution. For \(\theta\)
+in the interior of the full canonical parameter space \(\Theta\), the
+cumulant generating function corresponding to the canonical statistic is
+\begin{equation} \label{cgf}
+  k_\theta(t) = c(t + \theta) - c(\theta),  
+\end{equation} where \(c(\theta)\) is the cumulant function
+corresponding to the exponential family in canonical form. The
+derivatives of \(k_\theta(t)\) evaluated at 0 are the same as the
+cumulant function \(c\) evaluated at \(\theta\). The first and second
+cumulants of the canonical statistic are \begin{equation} \label{cumrel}
+\begin{split}
+    \nabla c(\theta) &= \mathrm{E}_\theta(Y) \\
+    \nabla^2 c(\theta) &= \mathrm{E}_\theta(YY^T) - \left[\mathrm{E}_\theta(Y)\right]\left[\mathrm{E}_\theta(Y)\right]^T = \mathrm{Var}_\theta(Y).  
+\end{split}
+\end{equation} In short, the mean and variance of the natural statistic
+always exist when \(\theta\) is in the interior of the full canonical
+parameter space \(\Theta\), and they are given by derivatives of the
+cumulant function.
+
+\vspace{0.5cm}
+
+\noindent{\bf Verify that \eqref{cumrel} holds for the Binomial, Poisson, and Normal distriburions.}
+
+\hypertarget{regular-exponential-families}{%
+\subsection{Regular exponential
+families}\label{regular-exponential-families}}
+
+This property of having mean and variance of the canonical statistic
+given by derivatives of the cumulant function is so nice that families
+which have it for all \(\theta\) are given a special name. An
+exponential family is \emph{regular} if its full canonical parameter
+space \eqref{parmspace} is an open set so that the moment and cumulant
+generating functions exist for all \(\theta\) and the formulas in the
+preceding section hold for all \(\theta\). Nearly every exponential
+family that arises in applications is regular. We will not discuss
+non-regular exponential families. We break from our expository tone on
+exponential families to collect concepts and formally state the primary
+exponential families that we are working with in this course.
+
+\begin{defn}
+A parametric statistical model is said to be a \textbf{full regular exponential family in canonical form} if it has log likelihood 
+$$
+    l(\theta) = \langle y, \theta \rangle - c(\theta).
+$$
+Here, $y$ is a vector statistic, $\theta$ is a canonical parameter vector, and $c(\theta)$ is the cumulant function where the parameter space $\Theta = \{\theta: c(\theta) < \infty\}$ is an open set. We use the convention that terms that do not contain the parameter vector can be dropped from a log likelihood. 
+\end{defn}
+
+Note that the log likelihood in the definition above is the same as
+\eqref{expolog} and \(\Theta\) the definition above is denoted as
+\(\Theta\) in \eqref{parmspace}.
+
+\vspace{0.5cm}
+
+\noindent {\bf Example (Binomial distribution)}: Done in class.
+
+\hypertarget{identifiability-and-directions-of-constancy}{%
+\subsection{Identifiability and directions of
+constancy}\label{identifiability-and-directions-of-constancy}}
+
+In this section we will discuss geometric properties of exponential
+families as they concern identifiability. A statistical model is
+\emph{identifiable} if any two distinct parameter values correspond to
+distinct distributions. An exponential family fails to be identifiable
+if there are two distinct canonical parameter values \(\theta\) and
+\(\psi\) such that the density \eqref{expodens} of one with respect to
+the other is equal to one with probability one. This happens if
+\(Y^T(\theta - \psi)\) is equal to a constant with probability one. And
+this says that the canonical statistic \(Y\) is concentrated on a
+hyperplane and the vector \(\theta - \psi\) is perpendicular to this
+hyperplane.
+
+Conversely, if the canonical statistic \(Y\) is concentrated on a
+hyperplane \begin{equation}\label{hyperplane}
+  H = \{y : y^Tv = a\}
+\end{equation} for some non-zero vector \(v\), then for any scalar \(s\)
+\begin{align*}
+  c(\theta + sv) &= \log\left(\int e^{\langle y, \theta + sv \rangle}\lambda(dy)\right) = sa + \log\left(\int e^{\langle y,\theta \rangle}\lambda(dy)\right) = sa + c(\theta),
+\end{align*} which immediately implies that \begin{align*}
+  l(\theta + sv) &= \langle Y,\theta +sv \rangle - c(\theta + sv) \\
+    &= \langle Y,\theta \rangle + s\langle Y,v \rangle - \left(sa + c(\theta)\right) \\
+    &= \langle Y,\theta \rangle + sa - \left(sa + c(\theta)\right) \\
+    &= l(\theta).
+\end{align*} Therefore, we see that the canonical parameter vectors
+\(\theta\) and \(\theta + sv\) correspond to the same exponential family
+with probability equal to one for all \(\theta \in \Theta\) when the
+canonical statistic is concentrated on a hyperplane \eqref{hyperplane}.
+We summarize this as follows.
+
+\begin{thm} \label{thm-identifiable}
+An exponential family fails to be identifiable if and only if the canonical statistic is concentrated on a hyperplane. If that hyperplane is given by \eqref{hyperplane} and the family is full, then $\theta$ and $\theta+sv$ are in the full canonical parameter space and correspond to the same distribution for every canonical parameter value $\theta$ and every scalar $s$.
+\end{thm}
+
+The direction \(sv\) along a vector \(v\) in the parameter space such
+that \(\theta\) and \(\theta + sv\) always correspond to the same
+distribution is called a \emph{direction of constancy}. The theorem says
+that \(v\) is such a vector if and only if \(Y^Tv\) is constant with
+probability one. It is clear from this that the set of all such vectors
+is closed under vector addition and scalar multiplication, hence is a
+vector subspace. This subspace is called the \emph{constancy space} of
+the family. \vspace{0.5cm}
+
+\noindent{\bf Note}: It is always possible to choose the canonical
+statistic and parameter so the family is identifiable. \(Y\) being
+concentrated on a hyperplane means some components are affine functions
+of other components with probability one, and this relation can be used
+to eliminate components of the canonical statistic vector until one gets
+to an identifiable choice of canonical statistic and parameter. But this
+is not always advisable. Prematurely enforcing identifiability may
+complicate many theoretical issues.
+
+\vspace*{0.5cm}
+
+\noindent{\bf Example (Multinomial distribution)}: We will show that the
+multinomial distribution is an exponential family and the usual vector
+statistic is canonical. To see this, let canonical parameter value
+\(\psi\) correspond to the multinomial distribution with sample size
+\(n\) and usual parameter vector \(p\), and we find the exponential
+family generated by this distribution. Let \(d\) denote the dimension of
+\(y\) and \(\theta\), let \({n \choose y}\) denote multinomial
+coefficients, and let \(S\) denote the sample space of the multinomial
+distribution (vectors having nonnegative integer components that sum to
+\(n\)).
+
+In the same vein as \eqref{Radon}, we obtain the identity
+\begin{equation} \label{cumident}
+    c(\theta) = c(\psi) + \log\left(\mathrm{E}_{\psi}\left(e^{\langle Y, \theta - \psi \rangle}\right)\right)
+\end{equation} Then \eqref{cumident} gives \begin{align*}
+  c(\theta) &= c(\psi) + \log\left(\mathrm{E}_{\psi}\left(e^{\langle Y, \theta - \psi \rangle}\right)\right) \\
+  &= c(\psi) + \log\left(\sum_{y\in S} e^{\langle y, \theta - \psi \rangle}{n \choose y} \prod_{i=1}^d p_i^{y_i}\right) \\
+  &= c(\psi) + \log\left(\sum_{y\in S} {n \choose y} \prod_{i=1}^d \left[p_ie^{\theta_i - \psi_i}\right]^{y_i}\right) \\
+  &= c(\psi) + n\log\left(\sum_{i=1}^d p_ie^{\theta_i - \psi_i}\right),
+\end{align*} where the last equality follows from the multinomial
+theorem. Then \eqref{Radon} gives \begin{align*}
+  f_{\theta}(y) &= f_{\psi}(y)e^{\langle y,\theta-\psi \rangle - c(\theta) + c(\psi)} \\
+    &= {n \choose y} \left(\prod_{i=1}^d\left[p_ie^{\theta_i-\psi_i}\right]^{y_i}\right)\left(\sum_{i=1}^d p_ie^{\theta_i-\psi_i}\right)^{-n} \\
+    &= {n \choose y} \prod_{i=1}^d \left(\frac{p_ie^{\theta_i-\psi_i}}{\sum_{j=1}^dp_je^{\theta_j-\psi_j}}\right)^{y_i}.
+\end{align*} We simplify the above by choosing \(p\) to be the vector
+with all components \(1/d\) and \(\psi\) to be the zero vector. We will
+also choose \(c(\psi) = n\log(d)\), so that \[
+  c(\theta) = n\log\left(\sum_{i=1}^d e^{\theta_i}\right).
+\] Thus, \[
+  f_{\theta}(y) = {n \choose y}\prod_{i=1}^d \left(\frac{e^{\theta_i}}{\sum_{j=1}^d e^{\theta_j}}\right)^{y_i}
+\] and this is the PMF of the multinomial distribution with sample size
+\(n\) and probability vector having components \[
+  p_i(\theta) = \frac{e^{\theta_i}}{\sum_{j=1}^d e^{\theta_j}}.
+\]
+
+This, however, is not an identifiable parameterization. The components
+of \(y\) sum to \(n\) so \(Y\) is concentrated on a hyperplane to which
+the vector \((1,1, \cdots, 1)^T\) is perpendicular, hence by Theorem 1 a
+direction of constancy of the family. Eliminating a component of \(Y\)
+to get an identifiability would destroy symmetry of formulas and make
+everything harder and messier. Best to wait until when (if ever)
+identifiability becomes absolutely necessary. \qed
+
+\vspace{0.5cm}
+
+The Right
+Way\footnote{The Right Way is borrowed vernacular from Charles Geyer. The Right Way means anything that is not obviously the Wrong Way. There can be several Right Ways, and choosing among them can be subjective.}
+(IMHO) to deal with nonidentifiability, which is also called
+collinearity in the regression context, is the way the \texttt{R}
+functions \texttt{lm} and \texttt{glm} deal with it. (We will have to
+see how linear and generalized linear models relate to exponential
+families before this becomes fully clear, but I assure you this is how
+what they do relates to a general exponential family). When you find you
+have a non-identifiable parameterization, you have \(Y^Tv\) constant
+with probability one. Pick any \(i\) such that \(v_i \neq 0\) and fix
+\(\theta_i = 0\) giving a submodel that (we claim) has all the
+distributions of the original one (we have to show this).
+
+For any parameter vector \(\theta\) in the original model (with
+\(\theta_i\) free to vary) we know that \(\theta + sv\) corresponds to
+the same distribution for all \(s\). Choose \(s\) such that
+\(\theta_i + sv_i = 0\), which is possible because \(v_i \neq 0\), hence
+we see that this distribution is in the new family obtained by
+constraining \(\theta_i\) to be zero (and the other components of
+\(\theta\) vary freely).
+
+This new model obtained by setting \(\theta_i\) equal to zero is another
+exponential family. Its canonical statistic and parameter are just those
+of the original family with the \(i\)-th component eliminated. Its
+cumulant function is just that of the original family with the \(i\)-th
+component of the parameter set to zero. This new model need not be
+identifiable, but if not there is another direction of constancy and the
+process can be repeated until identifiability is achieved (which it must
+because the dimension of the sample space and parameter space decreases
+in each step and cannot go below zero, and if it gets to zero the
+canonical statistic is concentrated at a single point, hence there is
+only one distribution in the family, and identifiability vacuously
+holds).
+
+This is what \texttt{lm} and \texttt{glm} do. If there is
+non-identifiability (collinearity), they report \texttt{NA} for some
+regression coefficients. This means that the corresponding predictors
+have been ``dropped'' but this is equivalent to saying that the
+regression coefficients reported to be \texttt{NA} have actually been
+constrained to be equal to zero. The code below demonstrates this point
+with a simple linear regression model with perfect collinearity.
+
+\vspace{12pt}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# generate covariates}
+\NormalTok{n }\OtherTok{=} \DecValTok{500}\NormalTok{; p }\OtherTok{=} \DecValTok{3}
+\NormalTok{M }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(n}\SpecialCharTok{*}\NormalTok{p), }\AttributeTok{nrow =}\NormalTok{ n)}
+
+\CommentTok{\# generate responses}
+\NormalTok{beta }\OtherTok{=} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, p)}
+\NormalTok{Y }\OtherTok{=} \DecValTok{1} \SpecialCharTok{+}\NormalTok{ M }\SpecialCharTok{\%*\%}\NormalTok{ beta }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n)}
+
+\CommentTok{\# add perfect collinearity to the model matrix}
+\NormalTok{M }\OtherTok{=} \FunctionTok{cbind}\NormalTok{(M, }\DecValTok{2}\SpecialCharTok{*}\NormalTok{M[, }\DecValTok{1}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ M[, }\DecValTok{2}\NormalTok{])}
+
+\CommentTok{\# fit linear regression model and produce model summary table}
+\NormalTok{m1 }\OtherTok{=} \FunctionTok{lm}\NormalTok{(Y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ M)}
+\FunctionTok{summary}\NormalTok{(m1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = Y ~ M)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -3.06447 -0.56798  0.02027  0.54337  3.13953 
+## 
+## Coefficients: (1 not defined because of singularities)
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  0.98194    0.04277   22.96   <2e-16 ***
+## M1           0.97563    0.04318   22.59   <2e-16 ***
+## M2           0.97655    0.04303   22.69   <2e-16 ***
+## M3           1.00563    0.04401   22.85   <2e-16 ***
+## M4                NA         NA      NA       NA    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.9553 on 496 degrees of freedom
+## Multiple R-squared:  0.7408, Adjusted R-squared:  0.7392 
+## F-statistic: 472.5 on 3 and 496 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\hypertarget{mean-value-parameterization}{%
+\subsection{Mean value
+parameterization}\label{mean-value-parameterization}}
+
+The mean of the canonical statistic \(\mathrm{E}_\theta(Y)\) is also a
+parameter. It is given as a function of the canonical parameter
+\(\theta\), \begin{equation} \label{mvp}
+  \mu = \mathrm{E}_\theta(Y) = \nabla c(\theta) = g(\theta).
+\end{equation} We will refer to \(g(\theta)\) as the change-of-parameter
+map (or change-of-parameter) from canonical parameter \(\theta\) to mean
+value parameter \(\mu\). This change-of-parameter map is invertible when
+the model is identifiable (see below) so that \eqref{mvp} implies that
+\(g^{-1}(\mu) = \theta\). This is very important for generalized linear
+models as we will soon see.
+
+\begin{thm} \label{thm-mvp}
+For a full regular exponential family, the change-of-parameter from canonical to mean value parameter is invertible if the model is identifiable. Moreover both the change-of-parameter and its inverse are infinitely differentiable.
+\end{thm}
+
+Note that some aspects of this proof are left to the reader. To prove
+this theorem we will let \(\mu\) be a possible value of the mean value
+parameter (that is, \(\mu = g(\theta)\) for some \(\theta\)) and
+consider the function \begin{equation}\label{h}
+  h(\theta) = \langle \mu,\theta \rangle - c(\theta).
+\end{equation} The second derivative of \(h\) is \(-\nabla^2c(\theta)\)
+which is equal to \(-\mathrm{Var}_\theta(Y)\), and this is a negative
+definite matrix (\textbf{Why?}) Hence \eqref{h} is a strictly concave
+function by Theorem 2.14 in \cite{rockafellar2009variational}, and this
+implies that the maximum of \eqref{h} is unique if it exists by Theorem
+2.6 in \cite{rockafellar2009variational}. Moreover, we know a solution
+exists because the derivative of \eqref{h} is
+\(\nabla h(\theta) = \mu - \nabla c(\theta)\), and we specified that
+\(\mu = \nabla c(\theta)\) for some \(\theta\).
+
+\textbf{Show that cumulant functions are infinitely differentiable and are therefore continuously differentiable}.
+Now we see that the Jacobian matrix for this change-of-parameters is \[
+  \nabla g(\theta) = \nabla^2 c(\theta)
+\] which we (you) have already shown is nonsingular. The
+\href{https://en.wikipedia.org/wiki/Inverse_function_theorem}{inverse
+function theorem} thus says that \(g\) is locally invertible, and the
+local inverse must agree with the global inverse which we have already
+shown exists. The inverse function theorem goes on to state that the
+derivative of the inverse is the inverse of the derivative \[
+  \nabla g^{-1}(\theta) = \left[\nabla g(\theta)\right]^{-1}, \qquad \text{when} \; \mu = g(\theta) \; \text{and} \; \theta = g^{-1}(\mu).
+\] \textbf{Now show that $g^{-1}(\theta)$ is infinitely differentiable}.
+
+\hypertarget{multivariate-monotonicity}{%
+\subsection{Multivariate monotonicity}\label{multivariate-monotonicity}}
+
+A mapping from \(g : \mathbb{R}^d \to \mathbb{R}^d\) is multivariate
+monotone (Definition 12.1 in \cite{rockafellar2009variational}) if
+\begin{equation} \label{multimono}
+  \left[g(x_1) - g(x_2)\right]^T(x_1 - x_2) \geq 0, \qquad \text{for} \; x_1 \; \text{and} \; x_2 \in \mathbb{R}^d,
+\end{equation} and strictly multivariate monotone if \eqref{multimono}
+holds with strict inequality whenever \(x_1 \neq x_2\). If \(g\) is
+differentiable, then by Proposition 12.3 in
+\cite{rockafellar2009variational} it is multivariate monotone if and
+only if the symmetric part of the Jacobian matrix \(\nabla g\) is
+positive-semidefinite for each \(x\). A sufficient but not necessary
+condition for \(g\) to be strictly multivariate monotone is that the
+symmetric part of \(\nabla g\) be positive definite for each \(x\).
+
+Let \(g\) be the change-of-parameters mapping from canonical to mean
+value parameters \eqref{mvp} then we showed in the previous section that
+its Jacobian matrix is positive semidefinite in general and strictly
+positive definite when the model is identifiable. Thus this
+change-of-parameter is multivariate monotone in general and strictly
+multivariate monotone when the model is identifiable.
+
+Thus, if \(\mu_1\) corresponds to \(\theta_1\) and \(\mu_2\) to
+\(\theta_2\), we have \begin{equation} \label{multiparm}
+  (\mu_1 - \mu_2)^T(\theta_1 - \theta_2) > 0, \qquad \text{whenever} ; \theta_1 \neq \theta_2.
+\end{equation} In general, this is all we can say about the map from
+canonical to mean value parameters. However, there is a casual version
+of \eqref{multiparm} which eases interpretation. If we rewrite
+\eqref{multiparm} using subscripts \[
+  \sum_{i=1}^d(\mu_{1i} - \mu_{2i})(\theta_{1i} - \theta_{2i}) > 0
+\] and consider \(\theta_1\) and \(\theta_2\) that differ in only one
+coordinate, say the \(k\)th, then we get \[
+  (\mu_{1k} - \mu_{2k})(\theta_{1k} - \theta_{2k}) > 0,
+\] which says
+\emph{if we increase one component of the canonical parameter vector, leaving the other components fixed, then the corresponding component of the mean value parameter vector also increases, and the other components can go any which way}.
+This is easier to explain than the full multivariate monotonicity
+property, but is not equivalent to it. The casual property is not enough
+to make some arguments about exponential families that are needed in
+applications (for example, see the Appendix in
+\cite{shaw2010inferring}).
+
+Here is another rewrite of \eqref{multiparm} that preserves its full
+force. Fix a vector \(v \neq 0\). Write \(\theta_2 = \theta\) and
+\(\theta_1 = \theta + sv\), so multivariate monotonicity
+\eqref{multimono} becomes \[
+  \left[g(\theta + sv) - g(\theta)\right]^Tv > 0, \qquad \text{for} \; s \neq 0.
+\] Differentiate with respect to \(s\) and set \(s = 0\), which gives
+the so-called directional derivative of \(g\) in the direction \(v\) at
+the point \(\theta\) \begin{equation} \label{directderiv}
+  \nabla g(\theta; v) = v^T\left[\nabla g(\theta)\right]v = v^T\left[\nabla^2 c(\theta)\right]v.
+\end{equation} We know that \(\nabla^2 c(\theta)\) is positive
+semi-definite in general and strictly positive definite when the model
+is identifiable. Hence we see (again) that the \(\theta\) to \(\mu\)
+mapping is multivariate monotone in general and strictly multivariate
+monotone when the model is identifiable.
+
+Partial derivatives are special cases of directional derivatives when
+the vector \(v\) points along a coordinate direction (only one component
+of \(v\) is nonzero). So the casual property only says that all the
+partial derivatives are nonzero and this corresponds to asserting
+\eqref{directderiv} with \(v\) being along coordinate directions, and
+this is equivalent to asserting that the diagonal components of
+\(\nabla^2 c(\theta)\) are positive. And now we clearly see how the
+casual property is indeed casual. It only asserts that the diagonal
+elements of \(\nabla^2 c(\theta)\) are positive, which is far from
+implying that \(\nabla^2 c(\theta)\) is a positive definite matrix.
+
+\hypertarget{maximum-likelihood-estimation}{%
+\section{Maximum likelihood
+estimation}\label{maximum-likelihood-estimation}}
+
+We now provide an approach for obtaining maximum likelihood estimates
+for parameters in a full regular exponential family. In our context, the
+derivative of the log likelihood is \[
+  \nabla l(\theta) = y - \nabla c(\theta),
+\] and the second derivative of the log likelihood is \[
+  \nabla^2 l(\theta) = -\nabla^2 c(\theta).
+\] Hence observed Fisher information (the Hessian matrix of the log
+likelihood) and expected Fisher information for the canonical parameter
+vector \(\theta\) are the same. We write Fisher information as
+\begin{equation} \label{FI}
+    I(\theta) = \nabla^2 c(\theta).
+\end{equation} Fisher information measures the expected curvature of the
+log likelihood around the true parameter value. If the likelihood is
+sharply curved around \(\theta\) -- the expected information
+\(I(\theta)\) is large -- then a small change in \(\theta\) can lead to
+a drastic decrease in the likelihood. Conversely, if \(I(\theta)\) is
+small then small changes in \(\theta\) will not affect the likelihood
+that much. These heuristics are important when we cover separation and
+non-identifiability.
+
+When the model is identifiable, the canonical statistic vector \(Y\) is
+not concentrated on a hyperplane, the second derivative is negative
+definite everywhere, hence the log likelihood is strictly concave, hence
+the maximum likelihood estimate is unique if it exists. Under this
+setup, \(y = \nabla c(\hat{\theta})\) arises from setting the first
+derivative of the log likelihood to zero and rearranging terms. This
+implies that the maximum likelihood estimator (MLE) for \(\theta\) is \[
+  \hat{\theta} = g^{-1}(y),
+\] where \(g\) is the change-of-parameter from canonical to mean value
+parameters.
+
+\vspace{0.5cm}
+
+\noindent {\bf Derive the MLEs of the canonical parameters of the Binomial, Poisson, and normal distributions.}
+
+\hypertarget{nonexistence-of-the-mle}{%
+\subsection{Nonexistence of the MLE}\label{nonexistence-of-the-mle}}
+
+Unlike our proof of Theorem \ref{thm-mvp} where we assumed the existence
+of a solution, we cannot prove the maximum likelihood estimate (for the
+canonical parameter) exists. Consider the binomial distribution. The MLE
+for the usual parameterization is \(\hat p = y/n\). The canonical
+parameter is \(\theta = \text{logit}(p)\). But
+\(\hat \theta = \text{logit}(\hat p)\) does not exist when
+\(\hat p = 0\) or \(\hat p = 1\), which is when we observe zero
+successes or when we observe \(n\) successes in \(n\) trials. We will
+revisit this topic later in the course.
+
+\hypertarget{observed-equals-expected}{%
+\subsection{Observed equals expected}\label{observed-equals-expected}}
+
+For a full regular exponential family, the MLE cannot be on the boundary
+of the canonical parameter space (regular means the boundary is empty),
+and the MLE, if it exists, must be a point where the first derivative is
+zero, that is, a \(\theta\) value that satisfies \[
+  y = \nabla c(\theta) = \mathrm{E}_\theta(Y).
+\] Thus the MLE is the (unique if the model is identifiable) parameter
+value that makes the observed value of the canonical statistic equal to
+its expected value. We call this the \textbf{observed equals expected}
+property of maximum likelihood in exponential families. This property is
+even simpler to express in terms of the mean value parameter. By
+invariance of maximum likelihood under change-of-parameter, the MLE for
+\(\mu\) is \[
+  \hat\mu = \nabla c(\hat\theta).
+\] The observed equals expected property therefore states that
+\begin{equation} \label{obsequalsexp}
+  y = \hat\mu.
+\end{equation}
+
+\hypertarget{independent-and-identically-distributed-data}{%
+\subsection{Independent and identically distributed
+data}\label{independent-and-identically-distributed-data}}
+
+Suppose \(y_1, \ldots, y_n\) are independent and identically distributed
+(iid) from some full regular exponential family (unlike our notation in
+the preceding section, \(y_i\) are not components of the canonical
+statistic vector but rather iid realizations of the canonical statistic
+vector, so each \(y_i\) is a vector). The log likelihood for sample size
+\(n\) is \begin{equation} \label{iid}
+    l_n(\theta) = \sum_{i=1}^n\left[\langle y_i,\theta \rangle - c(\theta)\right]
+      = \langle \sum_{i=1}^n y_i, \theta \rangle - n c(\theta),
+\end{equation} and we see that the above log likelihood is an
+exponential family with canonical statistic \(\sum_{i=1}^n y_i\),
+cumulant function \(n c(\theta)\), canonical parameter \(\theta\), and
+full canonical parameter space \(\Theta\) which is the same as the
+originally given family from which every observation is a member. Thus
+iid sampling gives us a new exponential family, but still an exponential
+family.
+
+\hypertarget{asymptotics-of-maximum-likelihood}{%
+\subsection{Asymptotics of maximum
+likelihood}\label{asymptotics-of-maximum-likelihood}}
+
+We now discover an asymptotic distribution for the MLE of the canonical
+parameter vector in a full regular exponential family. Rewrite
+\eqref{iid} as \[
+  l_n(\theta) = n\left[\langle \bar y_n, \theta \rangle - c(\theta)\right]
+\] so that \[
+  \nabla l_n(\theta) = n\left[\bar y_n - \nabla c(\theta)\right].
+\] From which we see that for an identifiable full regular exponential
+family where the MLE must be a point where the first derivative is zero,
+we can write \[
+    \nabla l_n(\theta) = n\left[\bar y_n - \nabla c(\theta)\right] = 0.
+\] From here we see that \(\bar y_n = \nabla c(\hat\theta)\). Recall the
+change-of-parameters mapping \(g:\theta \mapsto \mu\) given by
+\eqref{mvp} in the mean value parameters section. We can write
+\begin{equation} \label{MVPg}
+  \hat\theta_n = g^{-1}(\bar y_n).
+\end{equation} More precisely, \eqref{MVPg} holds when the MLE exists
+(when the MLE does not exist, \(\bar y_n\) is not in the domain of
+\(g^{-1}\), which is in the range of \(g\)).
+
+By the multivariate central limit theorem (CLT) \[
+  \sqrt{n}\left(\bar y_n - \mu\right) \to N\left(0, I(\theta)\right)
+\] and we know that \(g^{-1}\) is differentiable
+(Theorem\textasciitilde{}\ref{thm-mvp}) with the derivative given by \[
+  \nabla g^{-1}(\theta) = \left[\nabla g(\theta)\right]^{-1}, \qquad \text{where} \; \mu = g(\theta) \; \text{and} \; \theta = g^{-1}(\mu).
+\] So the usual asymptotics of maximum likelihood
+\begin{equation} \label{asymptoticsMLE}
+    \sqrt{n}\left(\hat\theta_n - \theta\right) \to N\left(0, I(\theta)^{-1}\right)
+\end{equation} is just the multivariate delta method applied to the
+multivariate CLT.
+
+In summary, one ``regularity condition'' for \eqref{asymptoticsMLE} to
+hold is that we have an identifiable full regular exponential family. Of
+course, \eqref{asymptoticsMLE} holds for many non-exponential-family
+models, but the regularity conditions are so complicated that they are
+often hard to verify. In exponential families the verification is
+trivial: the usual asymptotics of maximum likelihood always works.
+
+\hypertarget{finite-sample-concentration-of-mle}{%
+\subsection{Finite sample concentration of
+MLE}\label{finite-sample-concentration-of-mle}}
+
+\bibliographystyle{plainnat}
+\bibliography{../note_sources}
+
+\end{document}

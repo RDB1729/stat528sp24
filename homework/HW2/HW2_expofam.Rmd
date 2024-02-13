@@ -1,10 +1,11 @@
 ---
 title: "Homework 2: problems about exponential families"
-author: "your name"
+author: "Rajdeep Brahma"
 date: "Due: February 9th at 11:59 PM"
 output: pdf_document
 header-includes: 
  - \usepackage{amsthm}
+ - \usepackage{mathtools}
  - \usepackage{amsmath}
  - \usepackage{amsfonts}
  - \usepackage{amscd}
@@ -25,11 +26,28 @@ urlcolor: blue
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+\newcommand{\inner}[1]{\langle #1 \rangle}
+\newcommand{\Var}{\mathrm{Var}}
+
 This homework set will cover problems concerning exponential family theory. All derivations must be typed. Screenshots of work done with pen and paper will not be accepted.
 
 \vspace*{1cm}
 
 \noindent{\bf Problem 1}: Verify that displayed equation 7 in the exponential family notes holds for the binomial distribution, the Poisson distribution, and the normal distribution with both $\mu$ and $\sigma^2$ unknown.
+
+Solution: First, we consider the binomial distribution. We have $c(\theta)=\text{n}\log(1+e^\theta)$ where $\theta=\log(\frac{p}{1-p}).$ Now $\nabla c(\theta)=n\frac{e^\theta}{1+e^\theta}=np$ and $\nabla^2 c(\theta)=n\frac{e^\theta}{(1+e^\theta)^2}=np(1-p).$ So, this matches the expectation and variance of the binomial distribution.
+Next, we consider the poisson distribution. We have $c(\theta)=e^\theta$ where $\theta=\log(\lambda).$ Now $\nabla c(\theta)=e^\theta=\lambda$ and $\nabla^2 c(\theta)=e^\theta=\lambda.$ So, this matches the expectation and variance of the poisson distribution.
+Finally, we consider the normal distribution. We have $c(\theta)=-\frac{\theta_1^2}{4\theta_2}+\frac{1}{2}\log(-\frac{1}{2\theta_2})$ where $\theta=(\theta_1,\theta_2)=(\frac{\mu}{\sigma^2},-\frac{1}{2\sigma^2}).$ Now $\nabla c(\theta)=(-\frac{\theta_1}{2\theta_2},\frac{\theta_1^2}{4\theta_2^2}-\frac{1}{2\theta_2})=(\mu,\mu^2+\sigma^2)$ and $\nabla^2 c(\theta)=
+\left(\begin{matrix}
+  -\frac{1}{2\theta_2} & \frac{\theta_1}{2\theta_2^2}\\
+  \frac{\theta_1}{2\theta_2^2} & \frac{1}{2\theta_2^2}-\frac{\theta_1^2}{2\theta_2^3}
+\end{matrix}\right)=
+\big(\begin{smallmatrix}
+  \sigma^2 & 2\mu \sigma^2\\
+  2\mu \sigma^2 & 2 \sigma^4 + 4\mu^2\sigma^2
+\end{smallmatrix}\big)$.
+So, this matches the expectation and variance of $(X,X^2)$ where $X \sim N(\mu,\sigma^2).$
+
 
 \vspace*{1cm}
 
@@ -39,6 +57,15 @@ This homework set will cover problems concerning exponential family theory. All 
 - **part a**: Finish the proof of Theorem 3.
 
 Note that part a will be referenced later in this course. Hence, it is treated as its own sub-problem.
+
+Solution: \begin{equation}\label{h}
+  \notag
+  h(\theta) = \inner{\mu,\theta} - c(\theta).
+\end{equation}.Hence $\nabla h(\theta)=\mu-\nabla c(\theta)$ and $\nabla^2 h(\theta)=-\nabla^2 c(\theta)=-\Var_\theta(Y).$ This is a negative definite matrix because the exponential family model is identifiable implying that Y is not concentrated on a hyperplane.
+\newline To finish the proof of Theorem 3 we need to prove 2 more results.
+First one of them is "cumulant functions are infinitely differentiable and are therefore continuously differentiable". This is because 
+  $c(\theta) = \log\left(\int \exp\left(\inner{Y(w),\theta}\right) \lambda(dw)\right).$ Since log() and exp() functions are infinitely differentiable, $c(\theta)$ is too.
+  The second result that needs to be proved is "$g^{-1}(\theta)$ is infinitely differentiable". This is because $\frac{\partial A^{-1}}{\partial x}=-A^{-1}\frac{\partial A}{\partial x}A^{-1}.$ Hence, matrix inversion is infinitely differentiable and so is $g^{-1}(\theta)$ since $g(\theta)=\nabla c(\theta)$ is infinitely differentiable.
 
 \vspace*{1cm}
 
